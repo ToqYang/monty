@@ -42,7 +42,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line, int n);
+void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number);
 
 /**
  * Operation with stack
@@ -53,7 +53,7 @@ void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line, int n);
  * Nop stack it doesn't nothing
  */
 
-stack_t Push_In_Stack(stack_t **stack, unsigned int line_number);
+void Push_In_Stack(stack_t **stack, unsigned int line_number);
 void Pall_Stack(stack_t **stack, unsigned int line_number);
 void Pint_Top_Stack(stack_t **stack, unsigned int line_number);
 void Pop_Element_Stack(stack_t **stack, unsigned int line_number);

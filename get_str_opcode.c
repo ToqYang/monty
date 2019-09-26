@@ -8,7 +8,7 @@
  * Return: Result of the function
  **/
 
-void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line, int n)
+void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number)
 {
 	int elements;
 
