@@ -7,7 +7,7 @@
  * Return: Address of the new pointer to struct
  */
 
-stack_t Pop_Element_Stack(stack_t **stack, unsigned int line_number)
+void Pop_Element_Stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *del_Node;
 

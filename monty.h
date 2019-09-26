@@ -43,14 +43,19 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number);
+void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number);
 
 stackt_t Push_In_Stack(stack_t **stack, unsigned int line_number);
 void Pall_Stack(stack_t **stack, unsigned int line_number);
 void Pint_Top_Stack(stack_t **stack, unsigned int line_number);
-stackt_t Pop_Element_Stack(stack_t **stack, unsigned int line_number);
+void Pop_Element_Stack(stack_t **stack, unsigned int line_number);
 stackt_t Swap_Top_Stack(stack_t **stack, unsigned int line_number);
-stackt_t Add_Top_Stack(stack_t **stack, unsigned int line_number);
 stackt_t Nop_Stack(stack_t **stack, unsigned int line_number);
+
+stackt_t Add_Top_Stack(stack_t **stack, unsigned int line_number);
+stackt_t Sub_Top_Stack(stack_t **stack, unsigned int line_number);
+stackt_t Div_Top_Stack(stack_t **stack, unsigned int line_number);
+stackt_t Mul_Top_Stack(stack_t **stack, unsigned int line_number);
+stackt_t Mod_Top_Stack(stack_t **stack, unsigned int line_number);
 
 #endif

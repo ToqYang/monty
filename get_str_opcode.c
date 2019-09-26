@@ -8,7 +8,7 @@
  * Return: Result of the function
  **/
 
-int (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number)
+void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number)
 {
 	instruction_t instruction[] = {
 		{"push", Push_In_Stack},
@@ -18,6 +18,10 @@ int (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number)
 		{"swap", Swap_Top_Stack},
 		{"add", Add_Top_Stack},
 		{"nop", Nop_Stack},
+		{"sub", Sub_Top_Stack},
+		{"div", Div_Top_Stack},
+		{"mul", Mul_Top_Stack},
+		{"mod", Mod_Top_Stack},
 		{NULL, NULL}
 	}
 
