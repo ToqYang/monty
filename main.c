@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 			j++;
 		}
 		integer = atoi(tokens[1]);
-		function_struct();
+
 		i++;
 		number_line++;
 	}
