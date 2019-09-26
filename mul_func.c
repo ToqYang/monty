@@ -7,13 +7,13 @@
  * Return: Top number with the result
  */
 
-stackt_t Mul_Top_Stack(stack_t **stack, unsigned int line_number)
+stack_t Mul_Top_Stack(stack_t **stack, unsigned int line_number)
 {
         int num_Mul;
 
         num_Mul = *stack->n;
 
-        if (line_Number < 2)
+        if (line_number < 2)
         {
                 fprintf(stderr, "L<line_number>: can't mul, stack too short");
                 exit(EXIT_FAILURE);
