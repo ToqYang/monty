@@ -16,7 +16,6 @@ extern int number;
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
  * @next: points to the next element of the stack (or queue)
-e *
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO Holberton project
  */
@@ -45,17 +44,35 @@ typedef struct instruction_s
 
 void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number);
 
-stackt_t Push_In_Stack(stack_t **stack, unsigned int line_number);
+/**
+ * Operation with stack
+ * Push in stack
+ * Print all stack
+ * Print only the top
+ * Swap values from the top
+ * Nop stack it doesn't nothing
+ */
+
+stack_t Push_In_Stack(stack_t **stack, unsigned int line_number);
 void Pall_Stack(stack_t **stack, unsigned int line_number);
 void Pint_Top_Stack(stack_t **stack, unsigned int line_number);
 void Pop_Element_Stack(stack_t **stack, unsigned int line_number);
-stackt_t Swap_Top_Stack(stack_t **stack, unsigned int line_number);
-stackt_t Nop_Stack(stack_t **stack, unsigned int line_number);
+stack_t Swap_Top_Stack(stack_t **stack, unsigned int line_number);
+stack_t Nop_Stack(stack_t **stack, unsigned int line_number);
 
-stackt_t Add_Top_Stack(stack_t **stack, unsigned int line_number);
-stackt_t Sub_Top_Stack(stack_t **stack, unsigned int line_number);
-stackt_t Div_Top_Stack(stack_t **stack, unsigned int line_number);
-stackt_t Mul_Top_Stack(stack_t **stack, unsigned int line_number);
-stackt_t Mod_Top_Stack(stack_t **stack, unsigned int line_number);
+/**
+ * Mathematic operations
+ * Sum
+ * Substraction
+ * Division
+ * Multiply
+ * Module
+ */
+
+stack_t Add_Top_Stack(stack_t **stack, unsigned int line_number);
+stack_t Sub_Top_Stack(stack_t **stack, unsigned int line_number);
+stack_t Div_Top_Stack(stack_t **stack, unsigned int line_number);
+stack_t Mul_Top_Stack(stack_t **stack, unsigned int line_number);
+stack_t Mod_Top_Stack(stack_t **stack, unsigned int line_number);
 
 #endif

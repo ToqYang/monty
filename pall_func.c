@@ -9,8 +9,10 @@
 void Pall_Stack(stack_t **stack, unsigned int line_number)
 {
 	size_t count;
+	stack_t *aux_Stack;
 
 	count = 0;
+	aux_Stack = *stack;
 
 	if (line_number <= 0)
 	{
@@ -18,10 +20,10 @@ void Pall_Stack(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	while (stack != NULL)
+	while (aux_Stack != NULL)
 	{
-		printf("%d\n", stack->n);
-		stack = stack->next;
+		printf("%d\n", aux_Stack->n);
+		aux_Stack = aux_Stack->next;
 		++count;
 	}
 }
