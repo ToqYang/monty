@@ -10,13 +10,14 @@
  */
 int main(int argc, char *argv[])
 {
-	int integer = 0, number_line = 1, i = 0, j = 0;
+	int number = 0, number_line = 1, i = 0;
 	FILE *file = NULL;
 	char **tokens = NULL;
 
 	char *line = NULL;
 	size_t line_buf = 0;
-	ssize_t line_size = 0;
+
+	stack_t **stack = NULL;
 
 	if (argc != 2)
 	{
@@ -32,22 +33,12 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while (line_size != -1)
+	while ((getline(&line, &line_buf, file)) != -1)
 	{
-		line_size = getline(&line, &line_buf, file);
+		getline(&line, &line_buf, file);
 		tokens[i] = strtok(line, "  \n");
-		while (tokens[j])
-		{
-			if (j > 1)
-			{
-				fprintf(stderr, "Error: two instructions in one line\n");
-				fclose(file);
-				exit(EXIT_FAILURE);
-			}
-			j++;
-		}
-		integer = atoi(tokens[1]);
-
+		number = atoi(tokens[1]);
+		get_opcode_func(tokens[0])(stack, number_line);
 		i++;
 		number_line++;
 	}
