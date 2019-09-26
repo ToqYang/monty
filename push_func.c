@@ -7,7 +7,7 @@
  * Return: Success
  */
 
-stack_t Push_In_Stack(stack_t **stack, unsigned int line_number)
+void Push_In_Stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_Element;
 
@@ -22,7 +22,7 @@ stack_t Push_In_Stack(stack_t **stack, unsigned int line_number)
 	if (new_Element == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		exit(EXIT_FAILURE);	
+		exit(EXIT_FAILURE);
 	}
 
 	new_Element = *stack;
@@ -32,6 +32,4 @@ stack_t Push_In_Stack(stack_t **stack, unsigned int line_number)
 
 	if (new_Element->next != NULL)
 		new_Element->next->prev = new_Element;
-
-	return (new_Element);
 }
