@@ -13,14 +13,17 @@ stack_t Push_In_Stack(stack_t **stack, unsigned int line_number)
 
 	if (line_number <= 0)
 	{
-		fprintf(stderr, "L<line_number>: usage: push integer");
+		fprintf(stderr, "L%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	new_Element = malloc(sizeof(stack_t));
 
 	if (new_Element == NULL)
-		return (NULL);
+	{
+		fprintf(stderr, "Error: malloc failed");
+		exit(EXIT_FAILURE);	
+	}
 
 	new_Element = *stack;
 	new_Element->n = number;
@@ -28,9 +31,7 @@ stack_t Push_In_Stack(stack_t **stack, unsigned int line_number)
 	*stack = new_Element;
 
 	if (new_Element->next != NULL)
-	{
 		new_Element->next->prev = new_Element;
-	}
 
-	return (new_Element)
+	return (new_Element);
 }

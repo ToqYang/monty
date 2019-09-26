@@ -10,7 +10,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int number = 0, number_line = 1, i = 0;
+	extern int number;
+	int number_line = 1, i = 0;
 	FILE *file = NULL;
 	char **tokens = NULL;
 
