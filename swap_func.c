@@ -7,7 +7,7 @@
  * Return: Struct of the node
  */
 
-stackt_t Swap_Top_Stack(stack_t **stack, unsigned int line_number)
+stack_t Swap_Top_Stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *swap_Top;
 	int num1, num2;
@@ -15,7 +15,7 @@ stackt_t Swap_Top_Stack(stack_t **stack, unsigned int line_number)
 	num1 = 0;
 	num2 = 0;
 
-	if (line_Number < 2)
+	if (line_number < 2)
 	{
 		fprintf(stderr, "L<line_number>: can't swap, stack too short");
 		exit(EXIT_FAILURE);

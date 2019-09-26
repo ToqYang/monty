@@ -11,7 +11,7 @@ stack_t Push_In_Stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_Element;
 
-	if (line_Number <= 0)
+	if (line_number <= 0)
 	{
 		fprintf(stderr, "L<line_number>: usage: push integer");
 		exit(EXIT_FAILURE);
