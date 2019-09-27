@@ -16,19 +16,20 @@ void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number)
 	instruction_t instruction[] = {
 		{"push", Push_In_Stack},
 		{"pall", Pall_Stack},
-		/* {"pint", Pint_Top_Stack}, */
-		/* {"pop", Pop_Element_Stack}, */
-		/* {"swap", Swap_Top_Stack}, */
-		/* {"add", Add_Top_Stack}, */
-		/* {"nop", Nop_Stack}, */
-		/* {"sub", Sub_Top_Stack}, */
-		/* {"div", Div_Top_Stack}, */
-		/* {"mul", Mul_Top_Stack}, */
-		/* {"mod", Mod_Top_Stack}, */
+		{"pint", Pint_Top_Stack},
+		{"pop", Pop_Element_Stack},
+		{"swap", Swap_Top_Stack},
+		{"add", Add_Top_Stack},
+		{"nop", Nop_Stack},
+		{"sub", Sub_Top_Stack},
+		{"div", Div_Top_Stack},
+		{"mul", Mul_Top_Stack},
+		{"mod", Mod_Top_Stack},
+		{"pchar", pchar_func},
 		{NULL, NULL}
 	};
 
-	for (elements = 0; elements < 3; elements++)
+	for (elements = 0; elements < 13; elements++)
 	{
 		if (instruction[elements].opcode == NULL)
 		{

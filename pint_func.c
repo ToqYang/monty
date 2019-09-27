@@ -9,13 +9,10 @@
 void Pint_Top_Stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *pint_Node;
-	size_t count;
-
-	count = 0;
 
 	if (line_number <= 0)
 	{
-		fprintf(stderr, "L<line_number>: usage: push integer");
+		fprintf(stderr, "L%d: usage: push integer", global.l_num);
 		exit(EXIT_FAILURE);
 	}
 

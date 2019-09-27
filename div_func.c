@@ -7,29 +7,29 @@
  * Return: Top number with the result
  */
 
-stack_t Div_Top_Stack(stack_t **stack, unsigned int line_number)
+void Div_Top_Stack(stack_t **stack, unsigned int line_number)
 {
+	stack_t *num_Aux;
 	int num_Div;
 
-	num_Div = *stack->n;
+	num_Aux = *stack;
+	num_Div = num_Aux->n;
 
 	if (line_number < 2)
 	{
-		fprintf(stderr, "L<line_number>: can't div, stack too short");
+		fprintf(stderr, "L%d: can't div, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	if (num_Div == 0)
 	{
-		fprintf(stderr, "L<line_number>: division by zero");
+		fprintf(stderr, "L%d: division by zero", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		*stack->next->n /= num_Div;
+		num_Aux = (*stack)->next;
+		num_Aux->n /= (*stack)->n;
+		Pop_Element_Stack(stack, line_number);
 	}
-
-	Pop_Element_Stack(stack, line_number);
-
-	return (*stack);
 }

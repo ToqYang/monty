@@ -1,35 +1,35 @@
 #include "monty.h"
 
 /**
- * Div_Top_Stack - Mod of the numbers
+ * Mod_Top_Stack - Mod of the numbers
  * @stack: Store the head of the structure
  * @line_number: Lines inside the file
  * Return: Top number with the result
  */
 
-stack_t Div_Top_Stack(stack_t **stack, unsigned int line_number)
+void Mod_Top_Stack(stack_t **stack, unsigned int line_number)
 {
-	int num_Div;
+	stack_t *num_Aux;
+	int num_Mod;
 
-	num_Div = *stack->n;
+	num_Aux = *stack;
+	num_Mod = num_Aux->n;
 
 	if (line_number < 2)
 	{
-		fprintf(stderr, "L<line_number>: can't mod, stack too short");
+		fprintf(stderr, "L%d: can't mod, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	if (num_Div == 0 || num_Div < 0)
+	if (num_Mod == 0)
 	{
-		fprintf(stderr, "L<line_number>: division by zero");
+		fprintf(stderr, "L%d: division by zero", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		*stack->next->n %= num_Div;
+		num_Aux = (*stack)->next;
+		num_Aux->n %= (*stack)->n;
+		Pop_Element_Stack(stack, line_number);
 	}
-
-	Pop_Element_Stack(stack, line_number);
-
-	return (*stack);
 }

@@ -7,21 +7,20 @@
  * Return: Top number with the result
  */
 
-stack_t Add_Top_Stack(stack_t **stack, unsigned int line_number)
+void Add_Top_Stack(stack_t **stack, unsigned int line_number)
 {
-	int num_Add;
+	stack_t *num_Aux;
 
-	num_Add = *stack->n;
+	num_Aux = *stack;
 
 	if (line_number < 2)
 	{
-		fprintf(stderr, "L<line_number>: can't add, stack too short");
+		fprintf(stderr, "L%d: can't add, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	*stack->next->n += num_Add;
+	num_Aux = (*stack)->next;
+	num_Aux->n += (*stack)->n;
 
 	Pop_Element_Stack(stack, line_number);
-
-	return (*stack);
 }

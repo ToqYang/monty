@@ -1,32 +1,22 @@
 #include "monty.h"
 
 /**
- * Pop_Element_Stack - Remove the element of the stack
- * @stack: Header of the nodes
+ * Pop_Element_Stack - Remove top
+ * @stack: Header
  * @line_number: Lines of the file
  * Return: Address of the new pointer to struct
  */
 
 void Pop_Element_Stack(stack_t **stack, unsigned int line_number)
 {
-	stack_t *del_Node;
+	stack_t *Pop;
 
-	del_Node = *stack;
-
-	if (line_number <= 0)
+	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L<line_number>: usage: push integer");
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	del_Node = *stack->next;
-	free(*stack);
-	*stack = del_Node;
-
-	if (del_Node->next != NULL)
-	{
-		(*stack)->prev = NULL;
-	}
-
-	return (*stack);
+	Pop = *stack;
+	*stack = (*stack)->next;
+	free(Pop);
 }
