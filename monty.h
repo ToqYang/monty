@@ -9,8 +9,6 @@
 #include <stdio.h>
 #include <string.h>
 
-extern int number;
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -44,15 +42,6 @@ typedef struct instruction_s
 
 void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number);
 
-/**
- * Operation with stack
- * Push in stack
- * Print all stack
- * Print only the top
- * Swap values from the top
- * Nop stack it doesn't nothing
- */
-
 void Push_In_Stack(stack_t **stack, unsigned int line_number);
 void Pall_Stack(stack_t **stack, unsigned int line_number);
 void Pint_Top_Stack(stack_t **stack, unsigned int line_number);
@@ -60,19 +49,32 @@ void Pop_Element_Stack(stack_t **stack, unsigned int line_number);
 stack_t Swap_Top_Stack(stack_t **stack, unsigned int line_number);
 stack_t Nop_Stack(stack_t **stack, unsigned int line_number);
 
-/**
- * Mathematic operations
- * Sum
- * Substraction
- * Division
- * Multiply
- * Module
- */
-
 stack_t Add_Top_Stack(stack_t **stack, unsigned int line_number);
 stack_t Sub_Top_Stack(stack_t **stack, unsigned int line_number);
 stack_t Div_Top_Stack(stack_t **stack, unsigned int line_number);
 stack_t Mul_Top_Stack(stack_t **stack, unsigned int line_number);
 stack_t Mod_Top_Stack(stack_t **stack, unsigned int line_number);
+
+int _isdigit(char *str);
+
+#ifdef EXTERNS
+typedef struct externs
+{
+	int number;
+	char *opco;
+	int l_num;
+} ex_t;
+ex_t global;
+#else
+typedef struct externs
+{
+	int number;
+	char *opcode;
+	int line_num;
+} ex_t;
+extern ex_t global;
+#endif
+
+void Message_Error(stack_t **stack, unsigned int line_number);
 
 #endif

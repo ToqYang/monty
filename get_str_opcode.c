@@ -1,3 +1,4 @@
+#define EXTERNS
 #include "monty.h"
 
 /**
@@ -29,8 +30,15 @@ void (*get_opcode_func(char *str))(stack_t **stack, unsigned int line_number)
 
 	for (elements = 0; elements < 3; elements++)
 	{
+		if (instruction[elements].opcode == NULL)
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", global.l_num, global.opco);
+			exit(EXIT_FAILURE);
+		}
 		if (strcmp(instruction[elements].opcode, str) == 0)
+		{
 			return (instruction[elements].f);
+		}
 	}
-	return (NULL);
+	return (0);
 }

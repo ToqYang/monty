@@ -1,3 +1,4 @@
+#define EXTERNS
 #include "monty.h"
 
 /**
@@ -10,6 +11,11 @@
 void Push_In_Stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_Element;
+	char *numb = NULL;
+
+	numb = strtok(NULL, " \n\t");
+	if (_isdigit(numb) == 0)
+		global.number = atoi(numb);
 
 	if (line_number <= 0)
 	{
@@ -25,11 +31,18 @@ void Push_In_Stack(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	new_Element = *stack;
-	new_Element->n = number;
+	new_Element->n = global.number;
 	new_Element->prev = NULL;
-	*stack = new_Element;
+	new_Element->next = NULL;
 
-	if (new_Element->next != NULL)
-		new_Element->next->prev = new_Element;
+	if (*stack)
+	{
+		new_Element->next = *stack;
+		*stack = new_Element;
+
+		if (new_Element->next != NULL)
+			(new_Element->next)->prev = new_Element;
+	}
+	else
+		*stack = new_Element;
 }

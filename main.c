@@ -1,3 +1,4 @@
+#define EXTERNS
 #include "monty.h"
 
 /**
@@ -10,15 +11,15 @@
  */
 int main(int argc, char *argv[])
 {
-	extern int number;
-	int number_line = 1, i = 0;
+	int number_line = 1;
 	FILE *file = NULL;
-	char **tokens = NULL;
+	char *tokens = NULL;
 
 	char *line = NULL;
 	size_t line_buf = 0;
+	ssize_t line_size = 0;
 
-	stack_t **stack = NULL;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	file = fopen(argv[1], O_RDONLY);
+	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -34,13 +35,12 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((getline(&line, &line_buf, file)) != -1)
+	while ((line_size = getline(&line, &line_buf, file)) != -1)
 	{
-		getline(&line, &line_buf, file);
-		tokens[i] = strtok(line, "  \n");
-		number = atoi(tokens[1]);
-		get_opcode_func(tokens[0])(stack, number_line);
-		i++;
+		global.opco = line;
+		global.l_num = number_line;
+		tokens = strtok(line, " \n\t");
+		get_opcode_func(tokens)(&stack, number_line);
 		number_line++;
 	}
 	fclose(file);

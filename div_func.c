@@ -14,15 +14,15 @@ stack_t Div_Top_Stack(stack_t **stack, unsigned int line_number)
 	num_Div = *stack->n;
 
 	if (line_number < 2)
-        {
-                fprintf(stderr, "L<line_number>: can't div, stack too short");
-                exit(EXIT_FAILURE);
-        }
+	{
+		fprintf(stderr, "L<line_number>: can't div, stack too short");
+		exit(EXIT_FAILURE);
+	}
 
 	if (num_Div == 0)
 	{
 		fprintf(stderr, "L<line_number>: division by zero");
-                exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
@@ -31,5 +31,5 @@ stack_t Div_Top_Stack(stack_t **stack, unsigned int line_number)
 
 	Pop_Element_Stack(stack, line_number);
 
-        return (*stack);
+	return (*stack);
 }

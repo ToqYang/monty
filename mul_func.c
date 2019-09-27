@@ -9,20 +9,20 @@
 
 stack_t Mul_Top_Stack(stack_t **stack, unsigned int line_number)
 {
-        int num_Mul;
+	int num_Mul;
 
-        num_Mul = *stack->n;
+	num_Mul = *stack->n;
 
-        if (line_number < 2)
-        {
-                fprintf(stderr, "L<line_number>: can't mul, stack too short");
-                exit(EXIT_FAILURE);
-        }
+	if (line_number < 2)
+	{
+		fprintf(stderr, "L<line_number>: can't mul, stack too short");
+		exit(EXIT_FAILURE);
+	}
 
 
 	*stack->next->n *= num_Mul;
 
-        Pop_Element_Stack(stack, line_number);
+	Pop_Element_Stack(stack, line_number);
 
-        return (*stack);
+	return (*stack);
 }
